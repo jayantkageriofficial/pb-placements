@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+import { createClient } from "@/lib/supabase/server";
 import { 
   MemberService, 
   SkillService, 
@@ -42,7 +41,7 @@ function formatResumeDisplayName(fullName: string, year: number): string {
 
 export async function generateMetadata({ params }: ProfilePageProps): Promise<Metadata> {
   const { id } = await params;
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = createClient();
   
   let member = await MemberService.getMemberById(supabase, id);
   
@@ -70,7 +69,7 @@ export async function generateMetadata({ params }: ProfilePageProps): Promise<Me
 
 export default async function ProfilePage({ params }: ProfilePageProps) {
   const { id } = await params;
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = createClient();
   const { data: { user } } = await supabase.auth.getUser();
   
   let member = await MemberService.getMemberById(supabase, id);
