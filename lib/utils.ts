@@ -27,10 +27,11 @@ export function memberUrl(
   if (origin.endsWith('/')) {
     origin = origin.slice(0, -1);
   }
+  const basePath = origin && !origin.endsWith('/careers') ? '/careers' : '';
   if (type === 'resume') {
-    return `${origin}/profile/${slugify(name, id)}/resume`;
+    return `${origin}${basePath}/profile/${slugify(name, id)}/resume`;
   }
-  return `${origin}/profile/${slugify(name, id)}`;
+  return `${origin}${basePath}/profile/${slugify(name, id)}`;
 }
 
 export async function resolveIdFromParam(supabase: any, id: string): Promise<string> {
