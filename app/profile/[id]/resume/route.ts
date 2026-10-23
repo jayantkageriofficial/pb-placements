@@ -13,5 +13,5 @@ export async function GET(
 
   const memberId = await resolveIdFromParam(supabase, params.id);
 
-  return NextResponse.redirect(new URL(`/api/resume/view/${memberId}`, req.url));
+  return NextResponse.redirect(new URL(`/careers/api/resume/view/${memberId}`, req.url));
 }

@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
       }, { status: 404 });
     }
 
-    const proxyUrl = `/api/resume/view/${memberId}`;
+    const proxyUrl = `/careers/api/resume/view/${memberId}`;
 
     return NextResponse.json({
       success: true,

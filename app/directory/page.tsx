@@ -205,14 +205,14 @@ function DirectoryContent() {
         return {
           name: member.name,
           email: member.email,
-          profileLink: memberUrl(member.name, member.id, 'profile', currentOrigin),
+          profileLink: memberUrl(member.name, member.id, 'profile', `${currentOrigin}/careers`),
           resumeUrl: res.ok && data?.resumeUrl ? data.resumeUrl : 'Resume not available',
         };
       } catch (error) {
         return {
           name: member.name,
           email: member.email,
-          profileLink: memberUrl(member.name, member.id, 'profile', currentOrigin),
+          profileLink: memberUrl(member.name, member.id, 'profile', `${currentOrigin}/careers`),
           resumeUrl: 'Resume not available',
         };
       }
@@ -279,7 +279,7 @@ Best regards,
     }
 
     const profileSummary = selectedMembers.map((member, index) => 
-      `${index + 1}. ${member.name} - ${member.domain} (${member.year_of_study})\n   Profile: ${memberUrl(member.name, member.id, 'profile', currentOrigin)}`
+      `${index + 1}. ${member.name} - ${member.domain} (${member.year_of_study})\n   Profile: ${memberUrl(member.name, member.id, 'profile', `${currentOrigin}/careers`)}`
     ).join('\n\n');
     
     const shareText = `Check out these ${selectedMembers.length} talented developer${selectedMembers.length > 1 ? 's' : ''} from Point Blank:\n\n${profileSummary}`;

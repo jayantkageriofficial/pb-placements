@@ -391,7 +391,7 @@ export function ResumeSection({ resumeUrl, isEditable, userId, displayFileName }
 
   if (!isEditable && resumeUrl) {
     const cacheBuster = resumeUrl ? encodeURIComponent(resumeUrl.split('/').pop() || '') : '';
-    const proxyUrl = userId ? `/api/resume/view/${userId}?v=${cacheBuster}` : resumeUrl;
+    const proxyUrl = userId ? `/careers/api/resume/view/${userId}?v=${cacheBuster}` : resumeUrl;
     return (
       <div className="p-6">
         <h2 className="text-2xl font-semibold mb-6">Resume</h2>
@@ -485,12 +485,12 @@ export function ResumeSection({ resumeUrl, isEditable, userId, displayFileName }
 
                     <div className="flex items-center gap-2">
                       <ResumeModal 
-                        resumeUrl={userId ? `/api/resume/view/${userId}?filename=${file.name}` : file.publicUrl}
+                        resumeUrl={userId ? `/careers/api/resume/view/${userId}?filename=${file.name}` : file.publicUrl}
                         displayName={displayFileName || file.name}
                       />
                       
                       <Button variant="ghost" size="sm" asChild>
-                        <a href={userId ? `/api/resume/view/${userId}?filename=${file.name}` : file.publicUrl} download={displayFileName || file.name}>
+                        <a href={userId ? `/careers/api/resume/view/${userId}?filename=${file.name}` : file.publicUrl} download={displayFileName || file.name}>
                           <Download className="h-4 w-4" />
                         </a>
                       </Button>
